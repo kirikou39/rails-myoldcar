@@ -1,0 +1,17 @@
+<h1><%= @car.name %></h1>
+<ul class="list-inline">
+  <% @avg_rating.round(half: :down).times do %>
+    <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+  <% end %>
+  <% if @avg_rating.round(half: :down) != @avg_rating.round %>
+    <li class="list-inline-item m-0"><i class="fas fa-star-half-alt"></i></li>
+  <% end %>
+  <% (5 - @avg_rating.round(half: :up)).times do %>
+    <li class="list-inline-item m-0"><i class="far fa-star"></i></li>
+  <% end %>
+  <% if @count_rating > 0 %>
+    <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted">(<%= @count_rating %>)</span></li>
+  <% else %>
+    <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted">(<%= @count_rating %>)</span></li>
+  <% end %>
+</ul>
