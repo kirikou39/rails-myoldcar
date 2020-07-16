@@ -1,4 +1,6 @@
+<!-- Title -->
 <h1><%= @car.name %></h1>
+<!-- Car rating -->
 <ul class="list-inline">
   <% @avg_rating.round(half: :down).times do %>
     <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
@@ -15,3 +17,22 @@
     <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted">(<%= @count_rating %>)</span></li>
   <% end %>
 </ul>
+<!-- Picture -->
+<% @car.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
+<% end %>
+<hr>
+<h2>Description of the car</h2>
+<%= @car.year %> • <span>Nombre de places à remplir</span>
+<h3>Booking form (to be integrated)</h3>
+<p>Model: <%= @car.model %></p>
+<p>Engine type: <%= @car.engine_type %></p>
+<p>Transmission: <%= @car.transmission %></p>
+<p><%= @car.transmission %> km</p>
+
+
+<%= link_to "Edit", edit_car_path(@car) %> |
+<%= link_to "Back to vehicles list", cars_path %> |
+<%= link_to "Delete", car_path(@car), method: "delete" %>
+
+
