@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :username, :category, presence: true
   validates :category, inclusion: { in: %w(owner driver),
     message: "%{value} is not a valid User category" }
+  after_initialize :set_category
+  def set_category
+    self.category ||= "owner"
+  end
 end
