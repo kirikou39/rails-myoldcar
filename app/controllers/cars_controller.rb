@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+
   before_action :set_car, only: [:show, :destroy]
 
   def index
@@ -36,4 +37,5 @@ class CarsController < ApplicationController
   def set_car
     @car = Car.find(params[:id])
   end
+
 end
