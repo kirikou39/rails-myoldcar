@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+
   before_action :set_car, only: [:show, :destroy]
 
   def index
@@ -53,4 +54,5 @@ class CarsController < ApplicationController
   def set_car_user
     @car.user = current_user
   end
+
 end
