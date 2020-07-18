@@ -18,7 +18,7 @@ if Rails.env.development?
 end
 
 puts "Seeding cars..."
-20.times do
+2.times do
   car = Car.create(
     name: Faker::Vehicle.manufacture + " " + Faker::Marketing.buzzwords,
     price: rand(50...500),
