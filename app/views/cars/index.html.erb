@@ -3,7 +3,7 @@
       <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
     <% end %>
   <h2>Description of the car</h2>
-  <li>Model: <%= @car.model %></li>
-  <li>Year: <%= @car.year %></li>
-  <li>Price: <%= @car.price %></li>
+  <li>Model: <%= car.model %></li>
+  <li>Year: <%= car.year %></li>
+  <li>Price: <%= car.price %></li>
 <% end %>
