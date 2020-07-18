@@ -3,7 +3,7 @@
     <%= link_to car_path(car) do %>
       <% if car.photos.attached? %>
         <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
+          <%= cl_image_tag photo.key, height: 150, width: 300, crop: :thumb, class: "rounded card-thumbnail" %>
         <% end %>
       <% else %>
         <%= image_tag "car.png" %>
