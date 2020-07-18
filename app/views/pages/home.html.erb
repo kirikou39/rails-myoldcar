@@ -1,3 +1,7 @@
 <div id="cover">
+  <% if !current_user.present? %>
     <%= render 'shared/signup', user: User.new %>
+  <% else %>
+    <%= render 'shared/welcome' %>
+  <% end %>
 </div>
