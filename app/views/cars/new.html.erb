@@ -1,0 +1,12 @@
+<%= simple_form_for (@car) do |f| %>
+  <%= f.input :name, label: "Name of your ad", error: 'This field is mandatory, please specify a name' %>
+  <%= f.input :price, label: "Daily Price" %>
+  <%= f.input :model %>
+  <%= f.input :year %>
+  <%= f.input :address %>
+  <%= f.input :engine_type, collection: %w(Diesel Gasoline) %>
+  <%= f.input :transmission, collection: %w(Automatic Manual) %>
+  <%= f.input :kilometers %>
+  <%= f.input :photos, as: :file, required: true, input_html: { multiple: true }  %>
+  <%= f.submit "Create an ad", class: "btn btn-primary" %>
+<% end %>
