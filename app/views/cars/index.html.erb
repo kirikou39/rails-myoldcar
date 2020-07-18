@@ -1,9 +1,19 @@
+
+
 <% @cars.each do |car| %>
+  <div class="card-trip mt-3 mx-auto">
     <% car.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
     <% end %>
-  <h2>Description of the car</h2>
-  <li>Model: <%= car.model %></li>
-  <li>Year: <%= car.year %></li>
-  <li>Price: <%= car.price %></li>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= car.name %></h2>
+        <h7>Year: <%= car.year %></h3>
+        <p>Short description here!</p>
+      </div>
+      <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+  </div>
 <% end %>
+
