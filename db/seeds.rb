@@ -18,7 +18,8 @@ if Rails.env.development?
 end
 
 puts "Seeding cars..."
-2.times do
+5.times do
+  file = URI.open("https://source.unsplash.com/250x150/?old%20car")
   car = Car.create(
     name: Faker::Vehicle.manufacture + " " + Faker::Marketing.buzzwords,
     price: rand(50...500),
@@ -29,9 +30,8 @@ puts "Seeding cars..."
     transmission: %w(Automatic Manual).sample,
     kilometers: Faker::Vehicle.kilometrage,
     user:  User.all.sample
-
-    )
-  car.photos.attach(io: open("https://source.unsplash.com/250x150/?old%20car"), filename: 'car.png', content_type: 'image/png')
+  )
+  car.photos.attach(io: file, filename: 'car.png')
 end
 
 puts "Done seeding cars"
