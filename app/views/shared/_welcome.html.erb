@@ -1,0 +1,10 @@
+<h1>Welcome <%= current_user.username %> !</h1>
+<h3>Awesome, what would you like to do?</h3>
+<ul class="list-inline">
+  <%= link_to cars_path do %>
+    <li class="list-inline-item"><button type="button" class="btn btn-primary">See car listings</button></li>
+  <% end %>
+  <%= link_to new_car_path do %>
+   <li class="list-inline-item"><button type="button" class="btn btn-primary">Add a new listing</button></li>
+  <% end %>
+</ul>
