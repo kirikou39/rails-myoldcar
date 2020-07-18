@@ -12,7 +12,7 @@
     <li class="list-inline-item m-0"><i class="far fa-star"></i></li>
   <% end %>
   <% if @count_rating > 0 %>
-    <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted">(<%= @count_rating %>)</span></li>
+    <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted"> (<%= @count_rating %>)</span></li>
   <% else %>
     <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted">(<%= @count_rating %>)</span></li>
   <% end %>
@@ -28,7 +28,7 @@
 <p>Model: <%= @car.model %></p>
 <p>Engine type: <%= @car.engine_type %></p>
 <p>Transmission: <%= @car.transmission %></p>
-<p><%= @car.transmission %> km</p>
+<p><%= @car.kilometers %> km</p>
 
 
 <%= link_to "Edit", edit_car_path(@car) %> |
