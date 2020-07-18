@@ -1,0 +1,14 @@
+<div class="container">
+  <h3>Your current bookings</h3>
+  <div class="row">
+      <div class="col-12 col-md-8 col-lg-4">
+        <ul>
+          <% @bookings.each do |booking| %>
+            <li><%= booking.car.name %> <%= booking.car.model %> <%= booking.car.year %></li>
+            <li>Booked from <%= booking.start_date %> until <%= booking.end_date %></li>
+            <li>Total amount: <%= booking.amount %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+</div>
