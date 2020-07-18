@@ -12,30 +12,47 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    @car.save
-
-    # Redirect to ???
-    redirect_to car_path(@car)
+    set_car_user
+    if @car.save
+      redirect_to car_path(@car)
+    else
+      render :new
+    end
   end
 
   def show
+    sum = 0
+    @count_rating = 0
+    @car.reviews.each do |review|
+      sum += review.rating
+      @count_rating += 1 
+    end
+    if @count_rating > 0
+      @avg_rating = sum / @count_rating
+    else
+      @avg_rating = 0
+    end
   end
 
   def destroy
     @car.destroy
 
     # Redirect
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   private
 
   def car_params
-    params.require(:car).permit(:name, :price, :model, :year, :address, :transmission, :engine_type, :kilometers, :user)
+    params.require(:car).permit(:name, :price, :model, :year, :address, :transmission, :engine_type, :kilometers, :user, photos: [])
   end
 
   def set_car
     @car = Car.find(params[:id])
+  end
+
+  def set_car_user
+    @car.user = current_user
   end
 
 end
