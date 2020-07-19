@@ -8,6 +8,7 @@
         <h2><%= car.name %></h2>
         <h7>Year: <%= car.year %></h3>
         <p>Short description here!</p>
+        <%= link_to "Book now", new_car_booking_path(car) %>
       </div>
       <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
