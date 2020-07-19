@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="banner">
+  <div class="banner" style="margin-top: 64px">
     <% @car.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
+        <%= cl_image_tag photo.key %>
     <% end %>
   </div>
   <div class="row">

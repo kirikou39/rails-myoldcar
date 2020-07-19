@@ -1,4 +1,7 @@
 <!-- Title -->
+<div class="container" style="margin-top: 36px">
+  <div class="row">
+    <div class="col-12">
 <h1><%= @car.name %></h1>
 <!-- Car rating -->
 <ul class="list-inline">
@@ -24,7 +27,7 @@
 <hr>
 <h2>Description of the car</h2>
 <%= @car.year %> • <span>Nombre de places à remplir</span>
-<h3>Booking form (to be integrated)</h3>
+<p><%= link_to "Book now", new_car_booking_path(@car), class: "btn-ghost"%></p>
 <p>Model: <%= @car.model %></p>
 <p>Engine type: <%= @car.engine_type %></p>
 <p>Transmission: <%= @car.transmission %></p>
@@ -34,5 +37,7 @@
 <%= link_to "Edit", edit_car_path(@car) %> |
 <%= link_to "Back to the vehicles list", cars_path %> |
 <%= link_to "Delete", car_path(@car), method: "delete" %>
-
+      </div>
+    </div>
+</div>
 
