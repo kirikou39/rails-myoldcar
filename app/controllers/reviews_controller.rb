@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :set_car, only: [:new, :create]
+  before_action :set_car, only: [:index, :new, :create]
   before_action :set_review, only: [:show, :destroy]
 
   def index
-    @reviews = Review.where(user: current_user, car: set_car)
+    @reviews = Review.where(car: @car)
   end
   
   def show
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_car
-    @car = Car.find(params[:id])
+    @car = Car.find(params[:car_id])
   end
 
   def set_review
