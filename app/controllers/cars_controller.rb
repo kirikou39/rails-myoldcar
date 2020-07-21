@@ -1,7 +1,8 @@
 class CarsController < ApplicationController
 
   before_action :set_car, only: [:show, :destroy]
-
+  skip_before_action :authenticate_user!, only: [ :index ]
+  
   def index
     if params[:query].present?
       @cars = Car.search_by_name_and_year(params[:query])
