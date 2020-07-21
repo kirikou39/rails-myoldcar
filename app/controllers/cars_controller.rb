@@ -3,7 +3,11 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :destroy]
 
   def index
-    @cars = Car.all
+    if params[:query].present?
+      @cars = Car.search_by_name_and_year(params[:query])
+    else
+      @cars = Car.all
+    end
   end
 
   def new

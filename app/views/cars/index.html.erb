@@ -1,22 +1,41 @@
-<% @cars.each do |car| %>
-  <div class="card-trip mt-3 mx-auto">
-    <%= link_to car_path(car) do %>
-      <% if car.photos.attached? %>
-        <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 300, crop: :thumb, class: "rounded card-thumbnail" %>
-        <% end %>
-      <% else %>
-        <%= image_tag "car.png" %>
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= car.name %></h2>
-          <h7>Year: <%= car.year %></h3>
-          <p>Short description here!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 pt-4">
+     <%= form_tag cars_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a car"
+        %>
+        <div class="row justify-content-center">
+          <div class="col-sm-2 pt-1 pb-4">
+            <%= submit_tag "Search", class: "btn-ghost" %>
+          </div>
         </div>
-        <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-      </div>
     <% end %>
-  </div>
-<% end %>
+  <% @cars.each do |car| %>
+    <div class="card-trip mt-3 mx-auto">
+      <%= link_to car_path(car) do %>
+        <% if car.photos.attached? %>
+          <% car.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 150, width: 300, crop: :thumb, class: "rounded card-thumbnail" %>
+          <% end %>
+        <% else %>
+          <%= image_tag "car.png" %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= car.name %></h2>
+            <h7>Year: <%= car.year %></h7>
+            <p>Short description here!</p>
+          </div>
+          <div>
+            <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -11,5 +11,10 @@ class Car < ApplicationRecord
     message: "%{value} is not valid transmission type"}
 
   # Ideally validate address as well ==> later if possible
-
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_year,
+    against: [ :name, :year ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
