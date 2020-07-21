@@ -18,6 +18,7 @@ if Rails.env.development?
 end
 
 puts "Seeding cars..."
+# search_results = Unsplash::Photo.search("classic%20car")
 2.times do
   car = Car.create(
     name: Faker::Vehicle.manufacture + " " + Faker::Marketing.buzzwords,
@@ -30,7 +31,7 @@ puts "Seeding cars..."
     kilometers: Faker::Vehicle.kilometrage,
     user:  User.all.sample
   )
-  car.photos.attach(io: open("https://source.unsplash.com/250x150/?old%20car"), filename: 'car.png', content_type: 'image/png')
+  car.photos.attach(io: open("https://source.unsplash.com/400x150/?old%20car"), filename: 'car.png', content_type: 'image/png')
 end
 
 puts "Done seeding cars"
