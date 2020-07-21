@@ -16,3 +16,16 @@
   text-decoration: none;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 8px 20px 0 rgba(0,0,0,0.19);
 }
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #65DEF1;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #32D3EC;
+  color: white;
+}

@@ -1,19 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6 pt-4">
-     <%= form_tag cars_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a car"
-        %>
-        <div class="row justify-content-center">
-          <div class="col-sm-2 pt-1 pb-4">
-            <%= submit_tag "Search", class: "btn-ghost" %>
-          </div>
-        </div>
-    <% end %>
-
     <% @cars.each do |car| %>
       <div class="card-trip mt-3 mx-auto">
         <% car.photos.each do |photo| %>
