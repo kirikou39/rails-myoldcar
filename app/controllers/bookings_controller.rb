@@ -15,10 +15,10 @@ class BookingsController < ApplicationController
     @booking.amount = (@booking.end_date - @booking.start_date).to_i * @car.price
     @booking.car = @car
       if @booking.save
-        redirect_to booking_path(@booking)
+        redirect_to car_booking_path  (@car, @booking)
       else
         render 'new'
-      end
+      end_date
   end
 
   def show
@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :amount)
+    params.require(:booking).permit(:start_date, :end_date)
   end
   
   def set_booking
