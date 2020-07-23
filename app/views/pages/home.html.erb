@@ -1,14 +1,12 @@
 
   <% if !current_user.present? %>
     <%= render 'shared/search' %>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-sm-10">
+          <div class="container">
             <div class="grid-container">
               <% @cars.each do |car| %>
                 <div class="card-trip">
                   <% car.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
+                    <%= cl_image_tag photo.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
                   <% end %>
                   <div class="card-trip-infos">
                     <div>
@@ -25,8 +23,6 @@
               <% end %>
             </div>
           </div>
-        </div>
-      </div>
   <% else %>
       <%= render 'shared/welcome' %>
   <% end %>
