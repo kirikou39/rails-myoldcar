@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: [:new, :create, :show]
-
+  before_action :set_car, only: [:new, :create, :show]
+  before_action :set_booking, only: [:show]
   def index
     @bookings = Booking.where(user: current_user)
   end
@@ -14,15 +14,15 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.amount = (@booking.end_date - @booking.start_date).to_i * @car.price
     @booking.car = @car
+    @booking.user = current_user
       if @booking.save
-        redirect_to car_booking_path  (@car, @booking)
+        redirect_to car_booking_path(@car, @booking)
       else
         render 'new'
-      end_date
+      end
   end
 
   def show
-    @booking = @car.booking
   end
 
 
@@ -32,7 +32,11 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date)
   end
   
-  def set_booking
+  def set_car
   	@car = Car.find(params[:car_id])
+  end
+  
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
