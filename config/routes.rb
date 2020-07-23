@@ -5,16 +5,13 @@ Rails.application.routes.draw do
 
   resources :cars do
     resources :bookings, only: [:new, :create]
-    resources :reviews, only: [:index, :show]
+    resources :reviews, only: [:index, :show, :new, :create]
   end
 
   resources :users, except: :index do
     # A user needs to be able to see his bookings and a particular booking
   end
 
-  resources :bookings, only: [:index, :show, :destroy] do
-    resources :reviews, only: [:new, :create]
-  end
-
+  resources :bookings, only: [:index, :show, :destroy]
   resources :reviews, only: :destroy
 end
