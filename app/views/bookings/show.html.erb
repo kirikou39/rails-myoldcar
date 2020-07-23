@@ -1,5 +1,11 @@
-<h3>Booking details</h3>
-<%= @booking.car %>
-<%= @booking.start_date %>
-<%= @booking.end_date %>
-<%= @booking.amount %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 pt-4">
+      <h3>Booking details</h3>
+      <p><%= @booking.car.name %></p>
+      <p><%= @booking.start_date %></p>
+      <p><%= @booking.end_date %></p>
+      <p><%= @booking.amount %></p>
+    </div>
+  </div>
+</div>
