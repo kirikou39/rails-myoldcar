@@ -1,11 +1,14 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row">
     <div class="col-sm-6 pt-4">
       <h3>Booking details</h3>
-      <p><%= @booking.car.name %></p>
-      <p><%= @booking.start_date %></p>
-      <p><%= @booking.end_date %></p>
-      <p><%= @booking.amount %></p>
+      <% @booking.car.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 200, width: 400, crop: :thumb, class: "rounded" %>
+      <% end %>
+      <p><strong><%= @booking.car.name %></strong></p>
+      <p><strong>Booked from:</strong> <%= @booking.start_date %></p>
+      <p><strong>Until:</strong> <%= @booking.end_date %></p>
+      <p><strong>Total amount:</strong> <%= @booking.amount %> EUR</p>
     </div>
   </div>
 </div>
