@@ -1,6 +1,17 @@
-<%= simple_form_for [@car, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%#= f.input :amount, disabled: true %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="banner" style="margin-top: 64px">
+    <% @car.photos.each do |photo| %>
+        <%= cl_image_tag photo.key %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-8" style="margin-top: 72px">
+      <%= simple_form_for [@car, @booking] do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%#= f.input :amount, disabled: true %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
