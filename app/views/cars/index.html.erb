@@ -19,7 +19,7 @@
     <% @cars.each do |car| %>
       <div class="card-trip mt-3 mx-auto">
         <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
+          <%= cl_image_tag photo.key, height: 200, width: 250, crop: :thumb, class: "rounded" %>
         <% end %>
         <div class="card-trip-infos">
           <div>
