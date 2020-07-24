@@ -18,33 +18,25 @@
   <div class="grid-container">
     <% @cars.each do |car| %>
       <div class="card-trip mt-3 mx-auto">
-        <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 200, width: 250, crop: :thumb, class: "rounded" %>
+        <% if car.photos.attached? %>
+          <% car.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 200, width: 400, crop: :thumb, class: "rounded" %>
+          <% end %>
+        <% else %>
+          <%= image_tag "car.png" %>
         <% end %>
         <div class="card-trip-infos">
-
-        <%= link_to car_path(car) do %>
-          <% if car.photos.attached? %>
-            <% car.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 150, width: 400, crop: :thumb, class: "rounded" %>
-            <% end %>
-          <% else %>
-            <%= image_tag "car.png" %>
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= car.name %></h2>
-              <h7>Year: <%= car.year %></h3>
-              <p>Short description here!</p> 
-            </div>
-
+          <div>
+            <h2><%= car.name %></h2>
+            <h7>Year: <%= car.year %></h3>
+            <p>Short description here!</p> 
+          </div>
           <div>
             <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
           </div>
           <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
           <img src="https://avatars3.githubusercontent.com/u/31419836?v=4" class="card-trip-user avatar-bordered" />
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>

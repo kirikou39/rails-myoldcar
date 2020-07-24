@@ -1,16 +1,20 @@
-<h3>Your current bookings</h3>
 <div class="container" style="margin-top: 56px">
-  <% @bookings.each do |booking| %>
-  <div class="card-product">
-    <% booking.car.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 200, width: 400, crop: :thumb, class: "rounded" %>
-    <% end %>
-    <div class="card-product-infos">
-      <strong><p><%= booking.car.name %> <%= booking.car.model %> <%= booking.car.year %></p></strong>
-      <p>Booked from: <%= booking.start_date %></p>
-      <p>Until: <%= booking.end_date %></p>
-      <p>Total amount: <%= booking.amount %> EUR</p>
+  <div class="row justify-content-center">
+    <h3>YOUR CURRENT BOOKINGS</h3>
+    <div class="card-listings">
+      <% @bookings.each do |booking| %>
+      <div class="card-product">
+        <% booking.car.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 200, width: 300, crop: :thumb, class: "rounded" %>
+        <% end %>
+        <div class="card-product-infos">
+          <strong><p><%= booking.car.name %> <%= booking.car.model %> <%= booking.car.year %></p></strong>
+          <p>Booked from: <%= booking.start_date %></p>
+          <p>Until: <%= booking.end_date %></p>
+          <p>Total amount: <%= booking.amount %> EUR</p>
+        </div>
+      </div>
+      <% end %>
     </div>
-  </div> 
-  <% end %>
+  </div>
 </div>
