@@ -1,6 +1,7 @@
 const calculateAmount = () => {
   const startDateInput = document.querySelector("#booking_start_date");
   const endDateInput = document.querySelector("#booking_end_date");
+  const formAmount = document.querySelector("#booking_amount");
   const daily_price = 100;
   let start_date;
   let end_date;
@@ -15,6 +16,7 @@ const calculateAmount = () => {
       amount = "";
     }
     console.log("-2-", amount);
+    formAmount.value = amount;
     return amount;
   })
 
@@ -27,6 +29,7 @@ const calculateAmount = () => {
       amount = "";
     }
     console.log("-4-", amount);
+    formAmount.value = amount;
     return amount;
   })
   
