@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_booking, only: [:new, :create, :show]
+  before_action :set_car, only: [:new, :create, :show]
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -8,6 +8,10 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @booking.car = @car
+    
+    @count_rating = count_ratings(@car)
+    @avg_rating = avg_rating(@car)
   end
 
   def create
@@ -32,7 +36,27 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_date, :end_date, :amount)
   end
   
-  def set_booking
+  def set_car
   	@car = Car.find(params[:car_id])
+  end
+
+  def count_ratings(car)
+    @count_ratings = car.reviews.count
+  end
+
+  def avg_rating(car)
+    sum = 0
+
+    # Summing all the ratings
+    car.reviews.each do |review|
+      sum += review.rating
+    end
+
+    # Computing  and returning the average
+    if count_ratings(car) > 0
+      @avg_rating = sum / count_ratings(car)
+    else
+      @avg_rating = 0
+    end
   end
 end
