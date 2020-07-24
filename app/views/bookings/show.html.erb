@@ -1,5 +1,18 @@
-<h3>Booking details</h3>
-<%= @booking.car %>
-<%= @booking.start_date %>
-<%= @booking.end_date %>
-<%= @booking.amount %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="cardb">
+        <% @booking.car.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 200, width: 400, crop: :thumb, class: "rounded" %>
+        <% end %>
+        <p><strong>Car:</strong> <%= @booking.car.name %> <%= @booking.car.model %> <%= @booking.car.year %></p>
+        <p><strong>Transmission:</strong> <%= @booking.car.transmission %></p>
+        <p><strong>Engine type:</strong> <%= @booking.car.engine_type %></p>
+        <p><strong>Booked from:</strong> <%= @booking.start_date %></p>
+        <p><strong>Until:</strong> <%= @booking.end_date %></p>
+        <p><strong>Total amount:</strong> <%= @booking.amount %> EUR</p>
+        <%= link_to "Back to listings", cars_path, class: "btn-ghost" %>
+      </div>
+    </div>
+  </div>
+</div>
