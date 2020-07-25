@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   before_action :set_car, only: [:new, :create, :show]
   before_action :set_booking, only: [:show]
+
   def index
     @bookings = Booking.where(user: current_user)
   end
@@ -23,7 +24,14 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @cars = Car.geocoded
+    @markers = @cars.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+      }
   end
+end
 
 
   private
