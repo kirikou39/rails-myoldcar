@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :cars do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :show, :index]
     resources :reviews, only: [:index, :show, :new, :create]
   end
 
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     # A user needs to be able to see his bookings and a particular booking
   end
 
-  resources :bookings, only: [:index, :show, :destroy]
+  resources :bookings, only: [:index, :destroy]
   resources :reviews, only: :destroy
 end

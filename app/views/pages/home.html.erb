@@ -3,9 +3,7 @@
     <div class="grid-container">
       <% @cars.each do |car| %>
         <div class="card-trip">
-          <% car.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
-          <% end %>
+          <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
           <div class="card-trip-infos">
             <div>
               <h2><%= car.name %></h2>

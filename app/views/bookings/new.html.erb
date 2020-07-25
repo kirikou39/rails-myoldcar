@@ -1,15 +1,46 @@
-<div class="container">
-  <div class="banner" style="margin-top: 64px">
-    <% @car.photos.each do |photo| %>
-        <%= cl_image_tag photo.key %>
+<div class="container mt-3">
+  <h2><%= @car.name %></h2>
+
+  <!-- Car rating + city name-->
+  <ul class="list-inline">
+    <% @avg_rating.round(half: :down).times do %>
+      <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+    <% end %>
+
+    <% if @avg_rating.round(half: :down) != @avg_rating.round %>
+      <li class="list-inline-item m-0"><i class="fas fa-star-half-alt"></i></li>
+    <% end %>
+
+    <% (5 - @avg_rating.round(half: :up)).times do %>
+      <li class="list-inline-item m-0"><i class="far fa-star"></i></li>
+    <% end %>
+
+    <% if @count_rating > 0 %>
+      <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted"> (<%= @count_rating %>)</span></li>
+    <% else %>
+      <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted"> (<%= @count_rating %>)</span></li>
+    <% end %>
+
+    <li class="list-inline-item m-0"> • <u><%= @car.address %></u></li>
+  </ul>
+
+  <!-- Car pictures row -->
+  <div class="row justify-content-start">
+    <% @car.photos.each_with_index do |photo, index| %>
+      <% if index < 4 %>
+        <div class="p-1">
+          <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill, class: "rounded" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
+  <hr>
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-8" style="margin-top: 72px">
+    <div class="col-12 col-md-8 col-lg-8">
       <%= simple_form_for [@car, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%#= f.input :amount, disabled: true %>
+        <%= f.input :start_date, label: "Start of your reservation ?", as: :string, placeholder: "From", html5: true, order: [:day, :month, :year], input_html: { :"data-unavailable" => "#{@car.unavailable_dates.to_json}"}  %>
+        <%= f.input :end_date, label: "End of your reservation ?", as: :string, placeholder: "To", html5: true, disabled: true, order: [:day, :month, :year], input_html: { :"data-unavailable" => "#{@car.unavailable_dates.to_json}"} %>
+        <%= f.input :amount, label: "Total", input_html: {:"data-car-price" => "#{@car.price}"}, disabled: true %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
