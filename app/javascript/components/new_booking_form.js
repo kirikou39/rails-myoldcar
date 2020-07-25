@@ -2,7 +2,6 @@ const calculateAmount = () => {
   const startDateInput = document.querySelector("#booking_start_date");
   const endDateInput = document.querySelector("#booking_end_date");
   const formAmount = document.querySelector("#booking_amount");
-  const daily_price = parseInt(formAmount.dataset.carPrice, 10);
   let start_date;
   let end_date;
   let amount = "";
@@ -10,6 +9,7 @@ const calculateAmount = () => {
   console.log("End date input: ", endDateInput);
 
   if (startDateInput && endDateInput && formAmount) {
+    const daily_price = parseInt(formAmount.dataset.carPrice, 10);
     startDateInput.addEventListener('input', () => {
       start_date = new Date(startDateInput.value.slice(6, 8), startDateInput.value.slice(3, 5), startDateInput.value.slice(0, 2));
       console.log("start_date= ", start_date);
