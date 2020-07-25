@@ -41,4 +41,10 @@ document.addEventListener('turbolinks:load', () => {
   toggleDateInputs();
 });
 
-import "controllers"
+import "controllers";
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
+

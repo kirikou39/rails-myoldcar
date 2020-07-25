@@ -1,7 +1,11 @@
 class BookingsController < ApplicationController
 
   before_action :set_car, only: [:new, :create, :show]
+<<<<<<< HEAD
   before_action :set_booking, only: [:show, :destroy]
+=======
+  before_action :set_booking, only: [:show]
+>>>>>>> master
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -33,13 +37,28 @@ class BookingsController < ApplicationController
   end
 
   def show
+      # if @booking.save
+      #   redirect_to car_booking_path(@car, @booking)
+      # else
+      #   render 'new'
+      # end
+  # end
+
+  # def show
+    @cars = Car.geocoded
+    @markers = @cars.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+      }
   end
+end
 
 
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :amount)
+    params.require(:booking).permit(:start_date, :end_date)
   end
   
   def set_car

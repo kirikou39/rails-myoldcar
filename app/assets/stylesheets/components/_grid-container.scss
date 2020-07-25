@@ -6,14 +6,23 @@
   
 }
 
-@media(max-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .grid-container {
+    grid-template-columns: 1fr;
   }
 }
 
-@media(max-width: 768px) {
-  .cards {
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .grid-container {
     grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
   }
 }
