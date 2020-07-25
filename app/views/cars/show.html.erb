@@ -1,10 +1,10 @@
 <!-- Title -->
-<div class="container" style="margin-top: 36px">
+<div class="container-sm" style="margin-top: 36px" >
   <div class="row">
     <div class="col-12">
-<h1><%= @car.name %></h1>
+<h1><strong><%= @car.name  %> </strong></h1>
 <!-- Car rating -->
-<ul class="list-inline">
+<ul class="list-inline" style='color: red'>
   <% @avg_rating.round(half: :down).times do %>
     <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
   <% end %>
@@ -25,18 +25,25 @@
   <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
 <% end %>
 <hr>
-<h2>Description of the car</h2>
+<h2><strong>Description of the car</strong></h2>
 <%= @car.year %> • <span>Nombre de places à remplir</span>
+<p> </p>
 <p><%= link_to "Book now", new_car_booking_path(@car), class: "btn-ghost"%></p>
-<p>Model: <%= @car.model %></p>
-<p>Engine type: <%= @car.engine_type %></p>
-<p>Transmission: <%= @car.transmission %></p>
-<p><%= @car.transmission %> km</p>
+<p> </p>
+<p> </p>
+<p> </p>
 
+<p><li class="list-inline-item m-0"><i class="fas fas fa-car"></i></li><strong>   Model -</strong> <%= @car.model %></p>
+<p><li class="list-inline-item m-0"><i class="fas fa-gas-pump"></i></li><strong>   Engine type - </strong> <%= @car.engine_type %></p>
+<p><li class="list-inline-item m-0"><i class="fas fa-magic"></i></li><strong>   Transmission - </strong> <%= @car.transmission %></p>
+<p><li class="list-inline-item m-0"><i class="fas fa-road"></i></li><strong><%= @car.kilometers %>   km </strong></p>
 
+<%#= link_to "Edit", edit_car_path(@car)  %>
 <%= link_to "Back to the vehicles list", cars_path %> |
 <%= link_to "Delete", car_path(@car), method: "delete" %>
       </div>
     </div>
 </div>
+
+
 

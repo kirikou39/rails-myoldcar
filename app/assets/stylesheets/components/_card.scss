@@ -4,19 +4,19 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 400px;
 
-  
+
 
   &:hover {
     h2 {
-      color: scale-color($link-color, $lightness: +20%);      
+      color: scale-color($link-color, $lightness: +20%);
     }
 
     p {
-      color: scale-color($link-color, $lightness: +20%);      
+      color: scale-color($link-color, $lightness: +20%);
     }
 
     h7 {
-      color: scale-color($link-color, $lightness: +20%);      
+      color: scale-color($link-color, $lightness: +20%);
     }
   }
 }
@@ -25,7 +25,7 @@
   height: 150px;
   width: 100%;
   object-fit: fill;
-} 
+}
 
 .card-trip h2 {
   font-size: 16px;
@@ -54,6 +54,11 @@
   top: -20px;
   width: 40px;
 }
+
+/*.card-product {*/
+/*  overflow: hidden;
+  height: 120px;
+=======*/
 .card-product {
   overflow: hidden;
   height: 160px;
@@ -66,7 +71,7 @@
 }
 
 .card-product img {
-  pading: 4px;
+  padding: 4px;
   height: 100%;
   width: 300px;
   object-fit: cover;
@@ -89,7 +94,6 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
-
 
 .cardb img {
   margin-top: 180px;
