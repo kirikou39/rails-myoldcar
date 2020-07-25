@@ -33,14 +33,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-      # if @booking.save
-      #   redirect_to car_booking_path(@car, @booking)
-      # else
-      #   render 'new'
-      # end
-  # end
-
-  # def show
     @cars = Car.geocoded
     @markers = @cars.map do |car|
       {
