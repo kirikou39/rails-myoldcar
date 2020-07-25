@@ -43,7 +43,7 @@ class CarsController < ApplicationController
     @car.destroy
 
     # Redirect
-    redirect_to user_path(current_user)
+    redirect_to root_path
   end
 
   private
