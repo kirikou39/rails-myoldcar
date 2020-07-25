@@ -4,7 +4,8 @@ class Booking < ApplicationRecord
   belongs_to :car
   belongs_to :user
 
-  validates :start_date, :end_date, :amount, presence: true, availability: true
+  validates :start_date, :end_date, presence: true, availability: true
+  validates :amount, :car, :user, presence: true
   validates :amount, numericality: true
 
   # Validation with custom methods

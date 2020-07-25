@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :set_car, only: [:new, :create, :show]
+  before_action :set_booking, only: [:show, :destroy]
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -8,25 +9,30 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @booking.amount = ""
     @booking.car = @car
+
+    set_up_new_form
     
-    @count_rating = count_ratings(@car)
-    @avg_rating = avg_rating(@car)
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.amount = (@booking.end_date - @booking.start_date).to_i * @car.price
+    @booking.amount = (((@booking.end_date - @booking.start_date).to_i / (60 * 60 * 24)) + 1) * @car.price
     @booking.car = @car
-      if @booking.save
-        redirect_to booking_path(@booking)
-      else
-        render 'new'
-      end
+    @booking.user = current_user
+    if @booking.save
+      flash[:notice] = "Booking succesfully created!"
+      redirect_to car_booking_path(@car, @booking)
+    else
+      flash[:alert] = "Something went wrong. The booking has not been created!"
+      set_up_new_form
+      render :new
+      # redirect_to car_booking_path(@car, @booking)
+    end
   end
 
   def show
-    @booking = @car.booking
   end
 
 
@@ -40,8 +46,12 @@ class BookingsController < ApplicationController
   	@car = Car.find(params[:car_id])
   end
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def count_ratings(car)
-    @count_ratings = car.reviews.count
+    count_ratings = car.reviews.count
   end
 
   def avg_rating(car)
@@ -54,9 +64,14 @@ class BookingsController < ApplicationController
 
     # Computing  and returning the average
     if count_ratings(car) > 0
-      @avg_rating = sum / count_ratings(car)
+      avg_rating = sum / count_ratings(car)
     else
-      @avg_rating = 0
+      avg_rating = 0
     end
+  end
+
+  def set_up_new_form
+    @count_rating = count_ratings(@car)
+    @avg_rating = avg_rating(@car)    
   end
 end

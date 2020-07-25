@@ -38,6 +38,9 @@ gem 'faker'
 # Unsplash for random pictures
 gem 'unsplash'
 
+# Date picker
+gem 'flatpickr'
+
 # Pgsearch for searching records
 gem 'pg_search', '~> 2.3.0'
 gem 'autoprefixer-rails'

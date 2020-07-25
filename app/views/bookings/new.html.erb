@@ -38,8 +38,8 @@
   <div class="row">
     <div class="col-12 col-md-8 col-lg-8">
       <%= simple_form_for [@car, @booking] do |f| %>
-        <%= f.input :start_date, label: "Start of your reservation ?", as: :date, html5: true, order: [:day, :month, :year]  %>
-        <%= f.input :end_date, label: "End of your reservation ?", as: :date, html5: true, order: [:day, :month, :year] %>
+        <%= f.input :start_date, label: "Start of your reservation ?", as: :string, placeholder: "From", html5: true, order: [:day, :month, :year], input_html: { :"data-unavailable" => "#{@car.unavailable_dates.to_json}"}  %>
+        <%= f.input :end_date, label: "End of your reservation ?", as: :string, placeholder: "To", html5: true, disabled: true, order: [:day, :month, :year], input_html: { :"data-unavailable" => "#{@car.unavailable_dates.to_json}"} %>
         <%= f.input :amount, label: "Total", disabled: true %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
