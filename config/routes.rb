@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     # A user needs to be able to see his bookings and a particular booking
   end
 
-  resources :bookings, only: [:index, :show, :destroy]
+  resources :bookings, only: [:index, :destroy]
   resources :reviews, only: :destroy
 end
