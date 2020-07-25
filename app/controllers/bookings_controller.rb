@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    @booking.amount = ""
     @booking.car = @car
 
     set_up_new_form
@@ -19,6 +18,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.amount = (((@booking.end_date - @booking.start_date).to_i / (60 * 60 * 24)) + 1) * @car.price
+    # binding.pry
     @booking.car = @car
     @booking.user = current_user
     if @booking.save
@@ -26,9 +26,9 @@ class BookingsController < ApplicationController
       redirect_to car_booking_path(@car, @booking)
     else
       flash[:alert] = "Something went wrong. The booking has not been created!"
+      
       set_up_new_form
       render :new
-      # redirect_to car_booking_path(@car, @booking)
     end
   end
 
@@ -72,6 +72,7 @@ class BookingsController < ApplicationController
 
   def set_up_new_form
     @count_rating = count_ratings(@car)
-    @avg_rating = avg_rating(@car)    
+    @avg_rating = avg_rating(@car)
+    @booking.amount = nil  
   end
 end

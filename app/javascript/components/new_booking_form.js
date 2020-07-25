@@ -2,10 +2,10 @@ const calculateAmount = () => {
   const startDateInput = document.querySelector("#booking_start_date");
   const endDateInput = document.querySelector("#booking_end_date");
   const formAmount = document.querySelector("#booking_amount");
-  const daily_price = 100;
+  const daily_price = parseInt(formAmount.dataset.carPrice, 10);
   let start_date;
   let end_date;
-  let amount;
+  let amount = "";
   console.log("Start date input: ", startDateInput);
   console.log("End date input: ", endDateInput);
 
