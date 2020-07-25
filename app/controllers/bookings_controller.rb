@@ -1,11 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :set_car, only: [:new, :create, :show]
-<<<<<<< HEAD
-  before_action :set_booking, only: [:show, :destroy]
-=======
   before_action :set_booking, only: [:show]
->>>>>>> master
 
   def index
     @bookings = Booking.where(user: current_user)
