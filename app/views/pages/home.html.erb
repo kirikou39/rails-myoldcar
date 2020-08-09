@@ -2,23 +2,19 @@
   <div class="container">
     <div class="grid-container">
       <% @cars.each do |car| %>
-        <div class="card-trip">
-          <%= link_to car_path(car) do %>
-            <div>
-              <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
-              <div class="card-trip-infos">
-                <div>
-                  <h2><%= car.name %></h2>
-                  <h7>Year: <%= car.year %></h3>   
-                </div>
-                <div>
-                  <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
-                </div>
-                <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>
-                <img src="https://avatars3.githubusercontent.com/u/31419836?v=4" class="card-trip-user avatar-bordered"/>
-              </div>
+        <div class="card">
+          <div class="front">
+            <%= link_to car_path(car) do %>
+                <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
+            <% end %>
+          </div>      
+          <div class="back">
+            <div class="back-content middle">    
+              <h2><%= car.name %></h2>
+              <p><%= car.price.to_i %> EUR / day</p>
+              <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
             </div>
-          <% end %>
+          </div>
         </div>      
       <% end %>
     </div>

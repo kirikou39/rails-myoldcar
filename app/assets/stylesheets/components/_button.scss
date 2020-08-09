@@ -1,21 +1,42 @@
 .btn-ghost {
-  color: red;
-  border: 1px solid #4A4A4A;
-  margin-top: 8px;
-  padding: 4px 16px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-
+  color: black;
+  background: none;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  min-width: 50px;
+  margin: 10px;
+  transition: color 0.4s linear;
+  position: relative;
 }
 
 .btn-ghost:hover {
-  opacity: 1;
-  color: #4A4A4A;
-  text-decoration: none;
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 8px 20px 0 rgba(0,0,0,0.19);
+  color: #fff;
+
 }
+
+.btn-ghost::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+  transition: transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+}
+
+.btn-ghost::before {
+  transform: scaleX(0);
+}
+
+.btn-ghost:hover::before {
+  transform: scaleX(1);
+}
+
 
 .btn-flat {
   color: white;
