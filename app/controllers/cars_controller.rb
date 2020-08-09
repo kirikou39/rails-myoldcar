@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
 
   before_action :set_car, only: [:show, :destroy]
-  skip_before_action :authenticate_user!, only: [ :index ]
+  skip_before_action :authenticate_user!, only: [ :index, :show]
   
   def index
     if params[:query].present?
@@ -37,6 +37,13 @@ class CarsController < ApplicationController
       @avg_rating = sum / @count_rating
     else
       @avg_rating = 0
+    end
+    @cars = Car.geocoded
+    @markers = @cars.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude
+      }
     end
   end
 

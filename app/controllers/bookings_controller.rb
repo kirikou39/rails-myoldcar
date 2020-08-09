@@ -32,9 +32,9 @@ class BookingsController < ApplicationController
     end
   end
 
-  def show
-    @cars = Car.geocoded
-    @markers = @cars.map do |car|
+def show
+  @cars = Car.geocoded
+  @markers = @cars.map do |car|
       {
         lat: car.latitude,
         lng: car.longitude

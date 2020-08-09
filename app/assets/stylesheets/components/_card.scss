@@ -108,6 +108,32 @@
   margin-top: 56px;
 }
 
+.new-booking {
+  margin: 50px auto;
+  width: 1000px;
+}
+
+.car-section-one {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.car-section-one-h {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.car-section-one-h h2 {
+  font-size: 52px;
+  font-family: $h-font;
+}
+.car-section-one-p {
+  margin-top: 20px;
+  text-align: center;
+}
+.car-section-one-p p {
+  font-family: "Raleway", sans-serif;
+}
+
 #map {
   margin-top: 64px;
 }

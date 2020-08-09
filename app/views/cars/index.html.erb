@@ -14,30 +14,22 @@
     </div>
   </div>
 </div>
-<div class="container">
   <div class="grid-container">
     <% @cars.each do |car| %>
-      <div class="card-trip mt-3 mx-auto">
-        <%= link_to car_path(car) do %>
-          <div>
-            <% if car.photos.attached? %>
-                <%= cl_image_tag car.photos.first.key, height: 200, width: 300, crop: :thumb, class: "rounded" %>
-            <% else %>
-              <%= image_tag "car.png" %>
-            <% end %>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= car.name %></h2>
-                <h7>Year: <%= car.year %></h3>
-              </div>
-              <div>
-                <p><%#= link_to "Details", car_path(car), class: "btn-ghost" %></p>
-              </div>
-              <h2 class="card-trip-pricing"><%= car.price.to_i %> EUR / day</h2>        
-            </div>
+      <div class="card">
+        <div class="front">
+          <%= link_to car_path(car) do %>
+              <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
+          <% end %>
+        </div>      
+        <div class="back">
+          <div class="back-content middle">    
+            <h2><%= car.name %></h2>
+            <p><%= car.price.to_i %> EUR / day</p>
+            <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
           </div>
-        <% end %>
-      </div>
+        </div>
+      </div>      
     <% end %>
   </div>
-</div>
+

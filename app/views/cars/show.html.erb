@@ -1,48 +1,51 @@
 <!-- Title -->
-<div class="container-sm" style="margin-top: 36px" >
-  <div class="row">
-    <div class="col-12">
-<h1><strong><%= @car.name  %> </strong></h1>
-<!-- Car rating -->
-<ul class="list-inline" style='color: red'>
-  <% @avg_rating.round(half: :down).times do %>
-    <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
-  <% end %>
-  <% if @avg_rating.round(half: :down) != @avg_rating.round %>
-    <li class="list-inline-item m-0"><i class="fas fa-star-half-alt"></i></li>
-  <% end %>
-  <% (5 - @avg_rating.round(half: :up)).times do %>
-    <li class="list-inline-item m-0"><i class="far fa-star"></i></li>
-  <% end %>
-  <% if @count_rating > 0 %>
-    <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted">(<%= @count_rating %>)</span></li>
-  <% else %>
-    <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted">(<%= @count_rating %>)</span></li>
-  <% end %>
-</ul>
-<!-- Picture -->
-<% @car.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 150, width: 250, crop: :thumb, class: "rounded" %>
-<% end %>
-<hr>
-<h2><strong>Description of the car</strong></h2>
-<%= @car.year %> • <span>Nombre de places à remplir</span>
-<p> </p>
-<p><%= link_to "Book now", new_car_booking_path(@car), class: "btn-ghost"%></p>
-<p> </p>
-<p> </p>
-<p> </p>
+<div class="main-container">
+    <div class="row">
+      <div class="col-12" style="margin-top: 100px">
+        <h1><%= @car.name  %></h1>
+        <!-- Car rating -->
+        <ul class="list-inline" style='color: red'>
+          <% @avg_rating.round(half: :down).times do %>
+            <li class="list-inline-item m-0"><i class="fas fa-star"></i></li>
+          <% end %>
+          <% if @avg_rating.round(half: :down) != @avg_rating.round %>
+            <li class="list-inline-item m-0"><i class="fas fa-star-half-alt"></i></li>
+          <% end %>
+          <% (5 - @avg_rating.round(half: :up)).times do %>
+            <li class="list-inline-item m-0"><i class="far fa-star"></i></li>
+          <% end %>
+          <% if @count_rating > 0 %>
+            <li class="list-inline-item m-0"><span class="font-weight-bold"><%= @avg_rating %></span><span class="text-muted">(<%= @count_rating %>)</span></li>
+          <% else %>
+            <li class="list-inline-item m-0"><span class="font-weight-bold"> - </span><span class="text-muted">(<%= @count_rating %>)</span></li>
+          <% end %>
+        </ul>
+        <!-- Picture -->
+        <% @car.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 250, width: 350, crop: :thumb, class: "rounded" %>
+        <% end %>
+        <hr>
+        <strong>   Year -</strong><%= @car.year %>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
 
-<p><li class="list-inline-item m-0"><i class="fas fas fa-car"></i></li><strong>   Model -</strong> <%= @car.model %></p>
-<p><li class="list-inline-item m-0"><i class="fas fa-gas-pump"></i></li><strong>   Engine type - </strong> <%= @car.engine_type %></p>
-<p><li class="list-inline-item m-0"><i class="fas fa-magic"></i></li><strong>   Transmission - </strong> <%= @car.transmission %></p>
-<p><li class="list-inline-item m-0"><i class="fas fa-road"></i></li><strong><%= @car.kilometers %>   km </strong></p>
+        <p><li class="list-inline-item m-0"><i class="fas fas fa-car"></i></li><strong>   Model -</strong> <%= @car.model %></p>
+        <p><li class="list-inline-item m-0"><i class="fas fa-gas-pump"></i></li><strong>   Engine type - </strong> <%= @car.engine_type %></p>
+        <p><li class="list-inline-item m-0"><i class="fas fa-magic"></i></li><strong>   Transmission - </strong> <%= @car.transmission %></p>
+        <p><li class="list-inline-item m-0"><i class="fas fa-road"></i></li><strong><%= @car.kilometers %>   km </strong></p>
 
-<%#= link_to "Edit", edit_car_path(@car)  %>
-<%= link_to "Back to the vehicles list", cars_path %> |
-<%= link_to "Delete", car_path(@car), method: "delete" %>
-      </div>
+        <%#= link_to "Edit", edit_car_path(@car)  %>
+        <%= link_to "Browse cars", cars_path, class: "btn-ghost"%> |
+        <%= link_to "Book now", new_car_booking_path(@car), class: "btn-ghost"%>
+      </div>  
     </div>
+  <div id="map"
+    style="width: 1000px; height: 700px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">        
+  </div>
 </div>
 
 

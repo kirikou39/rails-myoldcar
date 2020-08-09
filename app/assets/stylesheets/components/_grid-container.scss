@@ -1,14 +1,28 @@
 .grid-container {
+  margin-top: 56px;
+  margin-left: 64px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 80px;
-  grid-gap: 40px;
+  grid-gap: 80px;
   
 }
 
 .main-container {
   display: flex;
   justify-content: space-around;
+}
+
+.main-container h1 {
+  font-family: $h-font;
+}
+
+.main-container p {
+  font-family: $p-font;
+}
+
+.main-container img {
+  margin-top: 34px;
 }
 
 // Smallest device
