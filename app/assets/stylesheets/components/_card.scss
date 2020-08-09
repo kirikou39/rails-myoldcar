@@ -74,6 +74,26 @@
   width: 100%;
 }
 
+.home-car {
+  margin: 156px auto;
+  max-width: 1400px;
+}
+.car-photo img {
+  width: 750px;
+}
+.car-section {
+  display: flex;
+}
+.car-section-text2 {
+  margin-left: 80px;
+}
+.car-section-text2 h2 {
+  font-size: 52px;
+  font-family: $h-font;
+}
+.car-section-title {
+  margin-bottom: 20px;
+}
 
 .cardb img {
   margin-top: 180px;
