@@ -8,6 +8,7 @@ class CarsController < ApplicationController
       @cars = Car.search_by_name_and_year(params[:query])
     else
       @cars = Car.all
+      @some_cars = Car.first(3)
     end
   end
 

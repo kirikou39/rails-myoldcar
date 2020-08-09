@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 80px;
   grid-gap: 40px;
   
@@ -28,6 +28,6 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

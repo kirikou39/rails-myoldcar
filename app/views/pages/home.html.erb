@@ -1,21 +1,27 @@
-<%= render 'shared/search' %>
-  <div class="container">
-    <div class="grid-container">
-      <% @cars.each do |car| %>
-        <div class="card">
-          <div class="front">
-            <%= link_to car_path(car) do %>
-                <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
-            <% end %>
-          </div>      
-          <div class="back">
-            <div class="back-content middle">    
-              <h2><%= car.name %></h2>
-              <p><%= car.price.to_i %> EUR / day</p>
-              <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
-            </div>
-          </div>
-        </div>      
-      <% end %>
-    </div>
+<div class="banner">
+  <div class="banner-part">
+    <h1>DRIVE YOUR DREAM CLASSIC CAR</h1>
+    <p>Book a classic car from the comfort of your home</p> 
   </div>
+  <%= render 'shared/search' %>
+</div>
+<section class="home-cars">
+  <div class="card-cars">
+    <% @some_cars.each do |car| %>
+      <div class="card">
+        <div class="front">
+          <%= link_to car_path(car) do %>
+              <%= cl_image_tag car.photos.first.key, height: 200, width: 400, crop: :fill, class: "rounded" %>
+          <% end %>
+        </div>      
+        <div class="back">
+          <div class="back-content middle">    
+            <h2><%= car.name %></h2>
+            <p><%= car.price.to_i %> EUR / day</p>
+            <p><%= link_to "Details", car_path(car), class: "btn-ghost" %></p>
+          </div>
+        </div>
+      </div>      
+    <% end %>
+  </div>
+</section>

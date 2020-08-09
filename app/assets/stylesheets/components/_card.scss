@@ -47,34 +47,6 @@
   transform: perspective(600px) rotateY(0deg);
 }
 
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-
-.card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
-
 
 .card-product {
   overflow: hidden;
@@ -87,30 +59,21 @@
   margin: 34px;
 }
 
-.card-product img {
-  padding: 4px;
-  height: 100%;
-  width: 300px;
-  object-fit: cover;
+.card-cars {
+  display: flex;
+  flex: 0 1 auto;
+  justify-content: space-between;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.home-cars {
+  margin: 50px auto;
+  padding: 0 50px;
+  max-width: 1400px;
+  width: 100%;
 }
 
-.card-product p {
-  font-size: 16px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
 
 .cardb img {
   margin-top: 180px;
@@ -127,4 +90,11 @@
 
 #map {
   margin-top: 64px;
+}
+
+@media (min-width: 768px) {
+.home-cars {
+  margin: 50px auto;
+  padding: 0 50px;
+  }
 }
